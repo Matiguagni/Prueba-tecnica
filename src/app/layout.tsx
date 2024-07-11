@@ -1,7 +1,13 @@
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+
 import "@/styles/globals.css";
 
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
+import { CssBaseline } from "@mui/material";
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -14,6 +20,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
+      <CssBaseline />
       <body>{children}</body>
     </html>
   );
