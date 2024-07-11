@@ -2,7 +2,7 @@ export interface Artwork {
   id: number;
   title: string;
   artist_title: string;
-  image_id: string;
+  image_id: string; //UUID
 }
 
 export interface ArtworksResponse {
@@ -10,4 +10,9 @@ export interface ArtworksResponse {
   config: {
     iiif_url: string;
   };
+}
+
+export interface ArtworkDetail {
+  id: number;
+  artist_display: string;
 }

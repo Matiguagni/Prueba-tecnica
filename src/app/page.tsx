@@ -10,7 +10,7 @@ export default function HomePage() {
     <div key="1" className="flex w-screen flex-col justify-center">
       <Navbar />
       <Container fixed>
-        <Typography className="flex justify-center" variant="h3">
+        <Typography className="mb-16 flex justify-center" variant="h3">
           ART COLECTION
         </Typography>
         <Artworks />
