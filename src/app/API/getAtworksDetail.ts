@@ -1,6 +1,5 @@
-import { type NextApiResponse } from "next";
 import axiosClient from "./axiosClient";
-import { Artwork, ArtworkDetail, ArtworksResponse } from "@/types/types";
+import { type ArtworkDetail } from "@/types/types";
 
 //METODO GET PARA LAS ARTWORKS
 

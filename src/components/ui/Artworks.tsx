@@ -1,10 +1,11 @@
+"use client";
+
 import { getArtworks } from "@/app/API/getArtworks";
-import { Artwork } from "@/types/types";
+import { type Artwork } from "@/types/types";
 import {
   Card,
   CardContent,
   CardMedia,
-  CircularProgress,
   Grid,
   LinearProgress,
   Typography,
@@ -43,7 +44,7 @@ export default function Artworks() {
     <Grid container spacing={8}>
       {artworks.map((artwork) => (
         <Grid item xs={12} sm={6} md={4} lg={3} key={artwork.id}>
-          <Link href={`/artworks/${artwork.id}`} passHref>
+          <Link href={`/artworks?id=${artwork.id}`} passHref>
             <Card>
               <CardMedia
                 component="img"

@@ -13,6 +13,22 @@ export interface ArtworksResponse {
 }
 
 export interface ArtworkDetail {
-  id: number;
-  artist_display: string;
+  data: {
+    id: number;
+    artist_display: string;
+    title: string;
+    artist_title: string;
+    image_id: string;
+    exhibition_history: string;
+    credit_line: string;
+    date_start: number;
+    date_end: number;
+    description: string;
+    dimensions: string;
+    place_of_origin: string;
+    publication_history: string;
+  };
+  config: {
+    iiif_url: string;
+  };
 }
