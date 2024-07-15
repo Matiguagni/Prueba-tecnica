@@ -1,29 +1,52 @@
-# Create T3 App
+# Prueba tecnica - 1.0.2. SPA React - Instituto de Arte de Chicago
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+## Create T3 App
 
-## What's next? How do I make an app with this?
+---
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+Este proyecto utliza el Stack-T3 inicializado con: `create-t3-app`
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## Descripcion
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+---
 
-## Learn More
+Este es un proyecto de prueba técnica el cual posee dos vistas en las cuales, en una de ellas se visualiza repertorio de obras de arte de la universidad y otro para ver en detalle la descripcion de cada obra de arte. Las cuales se acceden utilizando su API.
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+Proyecto realizado por Matias Guagni.
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+##Como ejecutar el proyecto
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+---
 
-## How do I deploy this?
+#####1. Clonaremos el repositorio mediante : https://github.com/Matiguagni/prueba-tecnica.git
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+##### 2. Ejecutaremos el proyecto en Visual Studio Code o su IDE de preferencia.
+
+##### 3. Ingresar vía Terminal o Command Prompt a la carpeta del proyecto para descargar las dependencias ejecutando el siguiente comando:
+
+npm install
+
+##### 4. Ejecutaremos en local el proyecto ejecutando en consola:
+
+npm run dev
+
+##### 5. Ingresar a http://localhost:3000 para ver el sitio de pruebas.
+
+## Demo en vivo
+
+---
+
+https://prueba-tecnica-ashen-rho.vercel.app/
+
+## Tecnologias utilizadas
+
+---
+
+- Framework: _React.js_
+- Lenguaje: _Typescript_
+- Versionado: _GIT_
+- Componentes: _Material UI_
+- IDE utilizada: _Visual Studio Code_
+- Alojamiento de codigo: _Github_
+- Gestion de dependencias: _npm_
+- Despliegue mediante: _Vercel_
