@@ -3,14 +3,23 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { getArtworksDetails } from "@/app/API/getAtworksDetail";
 import { type ArtworkDetail } from "@/types/types";
-import { Card, CardContent, CardMedia, Grid, Typography } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardContent,
+  CardMedia,
+  Container,
+  Grid,
+  LinearProgress,
+  Typography,
+} from "@mui/material";
 import Navbar from "@/components/ui/navbar";
+import { Height } from "@mui/icons-material";
+import Footer from "@/components/footer";
 
 const ArtworkDetailPage = () => {
   const router = useSearchParams(); //para obtener el id de la url
   const id = router.get("id");
-
-  console.log("id:", id);
 
   const [artworkDetail, setArtworkDetail] = useState<ArtworkDetail | null>(
     null,
@@ -24,7 +33,6 @@ const ArtworkDetailPage = () => {
     const fetchArtworkDetail = async () => {
       try {
         const data = await getArtworksDetails(Number(id)); // Convertir `id` a número entero
-        console.log(data);
         setArtworkDetail(data);
         setIiifUrl(data.config.iiif_url);
         setImage_id(data.data.image_id);
@@ -40,7 +48,7 @@ const ArtworkDetailPage = () => {
   }, [id]);
 
   if (loading) {
-    return <div>Cargando...</div>;
+    return <LinearProgress />;
   }
 
   if (error) {
@@ -54,33 +62,98 @@ const ArtworkDetailPage = () => {
   return (
     <div>
       <Navbar />
-      <div className="my-20 flex h-screen w-full justify-center align-middle">
-        <Grid item key={artworkDetail.data.id}>
-          <Card>
+      <Container>
+        <Box display="flex" flexDirection="column" alignItems="center" mt={8}>
+          <Card
+            style={{ width: "100%" }}
+            sx={{
+              border: "none",
+              boxShadow: "none",
+            }}
+          >
             <CardMedia
               component="img"
-              width="25"
-              height="50"
-              image={`${iiifUrl}/${image_id}/full/425,/0/default.jpg`}
+              width="100%"
+              height="auto"
+              image={`${iiifUrl}/${image_id}/full/843,/0/default.jpg`}
               alt={artworkDetail.data.title}
+              sx={{
+                objectFit: "contain", // Ajusta el tamaño de la imagen para que quepa en el contenedor
+                maxHeight: 300, // Altura mínima para la imagen
+              }}
             />
-            <CardContent>
-              <Typography
-                gutterBottom
-                variant="h5"
-                component="div"
-                className="flex justify-center align-middle"
-              >
-                {artworkDetail.data.title}
-              </Typography>
-            </CardContent>
+            <CardContent></CardContent>
           </Card>
-        </Grid>
-      </div>
-
-      <div className="mx-6 my-10 flex">
-        <Typography variant="h1">Descripcion</Typography>
-      </div>
+          <div className="ml-16 flex justify-center gap-20">
+            <ul className="text-left">
+              <li className="mb-2">
+                <Typography variant="body2">
+                  <strong>Title:</strong>{" "}
+                </Typography>
+              </li>
+              <li className="mb-2">
+                <Typography variant="body2">
+                  <strong>Origin:</strong>{" "}
+                </Typography>
+              </li>
+              <li className="mb-2">
+                <Typography variant="body2">
+                  <strong>Was painted:</strong>
+                </Typography>
+              </li>
+              <li className="mb-2">
+                <Typography variant="body2">
+                  <strong>Artist:</strong>{" "}
+                </Typography>
+              </li>
+              <li className="mb-2">
+                <Typography variant="body2">
+                  <strong>Credit: </strong>
+                </Typography>
+              </li>
+              <li className="mb-2">
+                <Typography variant="body2">
+                  <strong>Dimensions:</strong>
+                </Typography>
+              </li>
+            </ul>
+            <ul className="">
+              <li className="mb-2">
+                <Typography variant="body2">
+                  {artworkDetail.data.title}
+                </Typography>
+              </li>
+              <li className="mb-2">
+                <Typography variant="body2">
+                  {artworkDetail.data.place_of_origin}
+                </Typography>
+              </li>
+              <li className="mb-2">
+                <Typography variant="body2">
+                  {artworkDetail.data.date_start} -{" "}
+                  {artworkDetail.data.date_end}
+                </Typography>
+              </li>
+              <li className="mb-2">
+                <Typography variant="body2">
+                  {artworkDetail.data.artist_display}
+                </Typography>
+              </li>
+              <li className="mb-2">
+                <Typography variant="body2">
+                  {artworkDetail.data.credit_line}
+                </Typography>
+              </li>
+              <li className="mb-2">
+                <Typography variant="body2">
+                  {artworkDetail.data.dimensions}
+                </Typography>
+              </li>
+            </ul>
+          </div>
+        </Box>
+      </Container>
+      <Footer />
     </div>
   );
 };
