@@ -6,7 +6,7 @@ Este proyecto utliza el Stack-T3 inicializado con: `create-t3-app`
 
 ## Descripcion
 
-Este es un proyecto de prueba técnica el cual posee dos vistas en las cuales, en una de ellas se visualiza repertorio de obras de arte de la universidad y otro para ver en detalle la descripcion de cada obra de arte. Las cuales se acceden utilizando su API.
+Este es un proyecto de prueba técnica el cual posee dos vistas, en una de ellas el repertorio de obras de arte de la universidad y en la otra el detalle de cada una, las cuales se acceden utilizando su API.
 
 Proyecto realizado por Matias Guagni.
 

@@ -85,72 +85,29 @@ const ArtworkDetailPage = () => {
             />
             <CardContent></CardContent>
           </Card>
-          <div className="ml-16 flex justify-center gap-20">
-            <ul className="text-left">
-              <li className="mb-2">
-                <Typography variant="body2">
-                  <strong>Title:</strong>{" "}
-                </Typography>
-              </li>
-              <li className="mb-2">
-                <Typography variant="body2">
-                  <strong>Origin:</strong>{" "}
-                </Typography>
-              </li>
-              <li className="mb-2">
-                <Typography variant="body2">
-                  <strong>Was painted:</strong>
-                </Typography>
-              </li>
-              <li className="mb-2">
-                <Typography variant="body2">
-                  <strong>Artist:</strong>{" "}
-                </Typography>
-              </li>
-              <li className="mb-2">
-                <Typography variant="body2">
-                  <strong>Credit: </strong>
-                </Typography>
-              </li>
-              <li className="mb-2">
-                <Typography variant="body2">
-                  <strong>Dimensions:</strong>
-                </Typography>
-              </li>
-            </ul>
-            <ul className="">
-              <li className="mb-2">
-                <Typography variant="body2">
-                  {artworkDetail.data.title}
-                </Typography>
-              </li>
-              <li className="mb-2">
-                <Typography variant="body2">
-                  {artworkDetail.data.place_of_origin}
-                </Typography>
-              </li>
-              <li className="mb-2">
-                <Typography variant="body2">
-                  {artworkDetail.data.date_start} -{" "}
-                  {artworkDetail.data.date_end}
-                </Typography>
-              </li>
-              <li className="mb-2">
-                <Typography variant="body2">
-                  {artworkDetail.data.artist_display}
-                </Typography>
-              </li>
-              <li className="mb-2">
-                <Typography variant="body2">
-                  {artworkDetail.data.credit_line}
-                </Typography>
-              </li>
-              <li className="mb-2">
-                <Typography variant="body2">
-                  {artworkDetail.data.dimensions}
-                </Typography>
-              </li>
-            </ul>
+          <div className="ml-16 flex gap-20 text-justify">
+            <div className="flex flex-col">
+              <Typography variant="body2" className="mb-2">
+                <strong>Title:</strong> {artworkDetail.data.title}
+              </Typography>
+              <Typography variant="body2" className="mb-2">
+                <strong>Origin:</strong> {artworkDetail.data.place_of_origin}
+              </Typography>
+              <Typography variant="body2" className="mb-2">
+                <strong>Was painted:</strong> {artworkDetail.data.date_start} -{" "}
+                {artworkDetail.data.date_end}
+              </Typography>
+
+              <Typography variant="body2" className="mb-2">
+                <strong>Artist:</strong> {artworkDetail.data.artist_display}
+              </Typography>
+              <Typography variant="body2" className="mb-2">
+                <strong>Credit:</strong> {artworkDetail.data.credit_line}
+              </Typography>
+              <Typography variant="body2" className="mb-2">
+                <strong>Dimensions:</strong> {artworkDetail.data.dimensions}
+              </Typography>
+            </div>
           </div>
         </Box>
       </Container>

@@ -11,6 +11,14 @@ export interface ArtworksResponse {
   config: {
     iiif_url: string;
   };
+  pagination: {
+    current_page: number;
+    limit: number;
+    next_url: string;
+    offset: number;
+    total: number;
+    total_pages: number;
+  };
 }
 
 export interface ArtworkDetail {

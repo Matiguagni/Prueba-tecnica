@@ -2,16 +2,15 @@
 
 import Navbar from "@/components/ui/navbar";
 import { Container, Typography } from "@mui/material";
-import Footer from "@/components/footer";
 
 import Artworks from "@/components/ui/Artworks";
+import Footer from "@/components/footer";
 
 export default function HomePage() {
   return (
     <div key="1">
       <Navbar />
       <div className="mt-2 border-t border-gray-200"></div>
-
       <Container fixed>
         <Typography
           className="mb-8 mt-10 flex justify-start font-noto font-bold"

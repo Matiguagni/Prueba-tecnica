@@ -17,7 +17,7 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import Link from "next/link";
-import { useState, useEffect, ChangeEvent, FormEvent } from "react";
+import { useState, useEffect, ChangeEvent, FormEvent, use } from "react";
 
 export default function Artworks() {
   const [artworks, setArtworks] = useState<Artwork[]>([]);
@@ -26,16 +26,19 @@ export default function Artworks() {
   const [busqueda, setBusqueda] = useState("");
   const [searchArtwork, setSearchArtwork] = useState<Artwork[]>([]);
   const [image_id, setImage_id] = useState<string>("");
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [limit, setLimit] = useState(12);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getArtworks();
+        const data = await getArtworks(page, limit);
 
         setArtworks(data.data);
-        console.log("dataFetch", data.data);
-
+        console.log("dataFetch", data);
         setIiifUrl(data.config.iiif_url);
+        setTotalPages(data.pagination.total_pages);
       } catch (error) {
         console.error("error fetching artworks", error);
       } finally {
@@ -44,7 +47,7 @@ export default function Artworks() {
     };
 
     void fetchData();
-  }, []);
+  }, [page]);
 
   if (loading) {
     return <LinearProgress />;
@@ -63,6 +66,19 @@ export default function Artworks() {
     console.log(e.target.value);
   };
 
+  const handleNextPage = () => {
+    if (page < totalPages) {
+      setPage(page + 1);
+      console.log(page);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (page > 1) {
+      setPage(page - 1);
+    }
+  };
+
   return (
     <div>
       <div className="m-10 flex justify-center">
@@ -78,7 +94,7 @@ export default function Artworks() {
         </form>
       </div>
       {searchArtwork.length === 0 ? (
-        <p>no hay resultados</p>
+        <></>
       ) : (
         searchArtwork.map((artwork) => {
           return (
@@ -189,6 +205,17 @@ export default function Artworks() {
           </Grid>
         ))}
       </Grid>
+      <Box className="mt-8 flex w-full justify-center">
+        <Button disabled={page === 1} onClick={handlePrevPage}>
+          Previous
+        </Button>
+        <Typography variant="body2" className="flex items-center align-middle">
+          Page {page} of {totalPages}
+        </Typography>
+        <Button disabled={page === totalPages} onClick={handleNextPage}>
+          Next
+        </Button>
+      </Box>
     </div>
   );
 }
