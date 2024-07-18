@@ -9,7 +9,6 @@ export const searchArtworks = async (
       `/artworks/search?q=${busqueda}`,
     );
     return response.data;
-    adsasdsadasdasadsadadsdda;
   } catch (error) {
     console.error("Error searching artwork:", error);
     throw error;
