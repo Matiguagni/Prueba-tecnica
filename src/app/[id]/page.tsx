@@ -9,12 +9,10 @@ import {
   CardContent,
   CardMedia,
   Container,
-  Grid,
   LinearProgress,
   Typography,
 } from "@mui/material";
 import Navbar from "@/components/ui/navbar";
-import { Height } from "@mui/icons-material";
 import Footer from "@/components/footer";
 
 const ArtworkDetailPage = () => {
@@ -36,7 +34,6 @@ const ArtworkDetailPage = () => {
         setArtworkDetail(data);
         setIiifUrl(data.config.iiif_url);
         setImage_id(data.data.image_id);
-        console.log("Data artwork:", data);
       } catch (error) {
         console.error(`Error fetching artwork  details:`, error);
         setError(`Error fetching artwork  details. Please try again later.`);
@@ -79,13 +76,12 @@ const ArtworkDetailPage = () => {
               image={`${iiifUrl}/${image_id}/full/843,/0/default.jpg`}
               alt={artworkDetail.data.title}
               sx={{
-                objectFit: "contain", // Ajusta el tamaño de la imagen para que quepa en el contenedor
-                maxHeight: 300, // Altura mínima para la imagen
+                objectFit: "contain",
+                maxHeight: 300,
               }}
             />
-            <CardContent></CardContent>
           </Card>
-          <div className="ml-16 flex gap-20 text-justify">
+          <div className="ml-16 mt-16 flex gap-20 text-justify">
             <div className="flex flex-col">
               <Typography variant="body2" className="mb-2">
                 <strong>Title:</strong> {artworkDetail.data.title}

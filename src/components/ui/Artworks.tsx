@@ -1,7 +1,6 @@
 "use client";
 
 import { getArtworks } from "@/app/API/getArtworks";
-import { getArtworksDetails } from "@/app/API/getAtworksDetail";
 import { searchArtworks } from "@/app/API/searchArtworks";
 import { type Artwork } from "@/types/types";
 import {
@@ -9,13 +8,11 @@ import {
   Button,
   Card,
   CardContent,
-  CardMedia,
   Grid,
   Input,
   LinearProgress,
   Typography,
 } from "@mui/material";
-import axios from "axios";
 import Link from "next/link";
 import { useState, useEffect, ChangeEvent, FormEvent, use } from "react";
 
@@ -25,7 +22,6 @@ export default function Artworks() {
   const [loading, setLoading] = useState<boolean>(true);
   const [busqueda, setBusqueda] = useState("");
   const [searchArtwork, setSearchArtwork] = useState<Artwork[]>([]);
-  const [image_id, setImage_id] = useState<string>("");
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [limit, setLimit] = useState(12);
@@ -36,7 +32,6 @@ export default function Artworks() {
         const data = await getArtworks(page, limit);
 
         setArtworks(data.data);
-        console.log("dataFetch", data);
         setIiifUrl(data.config.iiif_url);
         setTotalPages(data.pagination.total_pages);
       } catch (error) {
@@ -58,18 +53,15 @@ export default function Artworks() {
     try {
       const data = await searchArtworks(busqueda);
       setSearchArtwork(data.data);
-      console.log("datasearch: ", data.data);
     } catch (error) {}
   };
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setBusqueda(e.target.value);
-    console.log(e.target.value);
   };
 
   const handleNextPage = () => {
     if (page < totalPages) {
       setPage(page + 1);
-      console.log(page);
     }
   };
 
@@ -123,12 +115,7 @@ export default function Artworks() {
                       marginTop: "1em",
                     }}
                   />
-                  {/* <CardMedia
-                component="img"
-                image={`${iiifUrl}/${artwork.image_id}/full/843,/0/default.jpg`}
-                alt={artwork.title}
-                style={{ height: "250px", width: "100%", objectFit: "contain" }}
-              /> */}
+
                   <CardContent
                     sx={{
                       flexGrow: 1,
@@ -160,9 +147,8 @@ export default function Artworks() {
                   height: "100%",
                   display: "flex",
                   flexDirection: "column",
-                  border: "1px  #ddd", // Borde personalizado con grosor y color
-                  // Bordes redondeados
-                  overflow: "hidden", // Para evitar que el contenido sobresalga
+                  border: "1px  #ddd",
+                  overflow: "hidden",
                   boxShadow:
                     "0px 1px 0px 0px #ddd, 1px 0px 0px 0px #ddd, -1px 0px 0px 0px #ddd, 0px 0px 1px 1px #ddd ", // Sombras solo en los bordes superiores y laterales
                 }}
@@ -178,12 +164,7 @@ export default function Artworks() {
                     marginTop: "1em",
                   }}
                 />
-                {/* <CardMedia
-                component="img"
-                image={`${iiifUrl}/${artwork.image_id}/full/843,/0/default.jpg`}
-                alt={artwork.title}
-                style={{ height: "250px", width: "100%", objectFit: "contain" }}
-              /> */}
+
                 <CardContent
                   sx={{
                     flexGrow: 1,
@@ -209,7 +190,10 @@ export default function Artworks() {
         <Button disabled={page === 1} onClick={handlePrevPage}>
           Previous
         </Button>
-        <Typography variant="body2" className="flex items-center align-middle">
+        <Typography
+          variant="body2"
+          className="flex items-center align-middle font-noto"
+        >
           Page {page} of {totalPages}
         </Typography>
         <Button disabled={page === totalPages} onClick={handleNextPage}>
