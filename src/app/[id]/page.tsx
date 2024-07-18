@@ -36,6 +36,7 @@ const ArtworkDetailPage = () => {
         setArtworkDetail(data);
         setIiifUrl(data.config.iiif_url);
         setImage_id(data.data.image_id);
+        console.log("Data artwork:", data);
       } catch (error) {
         console.error(`Error fetching artwork  details:`, error);
         setError(`Error fetching artwork  details. Please try again later.`);

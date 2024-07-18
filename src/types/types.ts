@@ -3,6 +3,7 @@ export interface Artwork {
   title: string;
   artist_title: string;
   image_id: string; //UUID
+  alt_image_ids: string;
 }
 
 export interface ArtworksResponse {
